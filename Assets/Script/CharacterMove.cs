@@ -17,7 +17,18 @@ public class CharacterMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // if(Input.GetKey(KeyCode.Space))
+        // {
+        //     if()
+        // }
+    }
+    void OntTriggerEnter(Collider col)
+    {
+        // if(col.tag == black)
+        // {
+        //     Debug.Log("검은 구슬");
+        // }
+
     }
 
     void FixedUpdate()
@@ -28,6 +39,7 @@ public class CharacterMove : MonoBehaviour
     {
         Vector3 moveVelocity = Vector3.zero;
 
+    
         if(Input.GetAxisRaw ("Horizontal")<0){
             moveVelocity = Vector3.left;
         }
@@ -43,6 +55,8 @@ public class CharacterMove : MonoBehaviour
         else if(Input.GetAxisRaw ("Vertical")>0){
             moveVelocity = Vector3.up;
         }
+
+       
 
         transform.position += moveVelocity * moveSpeed * Time.deltaTime;
     }
