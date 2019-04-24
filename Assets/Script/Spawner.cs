@@ -15,16 +15,19 @@ public class Spawner : MonoBehaviour
         {
             GameObject obj = Blackball;
             item = Instantiate(Blackball);//네개 생성
-            pos[i].x = -18.7f;
+            pos[i].x = (-18.7f);
             pos[i].y = 8.7f + (-5.4f * i);
-            obj.transform.position = new Vector3(pos[i].x, pos[i].y, 0);
-            obj.SetActive(true);
+            obj.transform.position = new Vector2(pos[i].x, pos[i].y);
+            //obj.SetActive(true);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        // if()
+        // {
 
+        // }
     }
 }

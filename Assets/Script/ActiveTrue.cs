@@ -5,16 +5,16 @@ using UnityEngine;
 public class ActiveTrue : MonoBehaviour
 {
     // Start is called before the first frame update
-Ball ball = GameObject.Find("Ball").GetComponent<Ball>();
+    Ball ball = GameObject.Find("Ball").GetComponent<Ball>();
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(ball.check == 2)
+        if (ball.check == 2)
         {
             gameObject.SetActive(true);
         }
