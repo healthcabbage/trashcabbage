@@ -14,10 +14,9 @@ public class ActiveTrue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ball.check == 2)
-        {
+        if(gameObject.activeSelf == false)
             gameObject.SetActive(true);
-        }
+
 
     }
 }
