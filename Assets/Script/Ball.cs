@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
 {
     // Start is called before the first frame update
     bool col = false;
+    bool pickup = false;
     public Sprite[] ball;
     public int check = 0;
     bool reseet = false;
@@ -14,6 +15,7 @@ public class Ball : MonoBehaviour
     public Sprite NextSprite;
     private SpriteRenderer spriteRenderer;
     public float delatTime = 3.0f;
+    Vector2 pPos;
     void Start()
     {
 
@@ -28,35 +30,37 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         if (col == true)
         {
+              if (reseet == true)
+                {
+                    timer += Time.deltaTime;
+                    if (timer > delatTime)
+                    {
+                        spriteRenderer.sprite = NextSprite;
+                        NextSprite = ball[0];
+                        
+                        spriteRenderer.tag = "black";
+                        gameObject.name = "black";
+                        timer = 0;
+                        check = 0;
+                        reseet = false;
+
+                    }
+                } 
+                
             if (Input.GetKeyDown("[0]"))
             {
+              
                 Change();
+
                 Debug.Log("키누름");
             }
-        }
-
- 
-        if (reseet == true)
-        {
-             timer += Time.deltaTime;
-            if (timer > delatTime)
+            if (Input.GetKeyDown("enter"))
             {
-                timer += Time.deltaTime;
-                spriteRenderer.sprite = NextSprite;
-                NextSprite = ball[0];
-
-                spriteRenderer.tag = "black";
-                gameObject.name = "black";
-                timer = 0;
-                check = 0;
-                reseet = false;
-
+                PickUpBall();
+                pickup = true;
             }
-
         }
 
 
@@ -64,7 +68,23 @@ public class Ball : MonoBehaviour
 
     }
 
+    void PickUpBall()
+    {
+        //gameObject.transform.position = pPos;
+        GameObject packball;
+        packball = Instantiate(gameObject);
+        packball.transform.position = pPos;
+        Debug.Log("픽업");
 
+        packball.gameObject.GetComponent<FollowBall>().enabled = true;
+
+        spriteRenderer.sprite = ball[0];
+        spriteRenderer.tag = "black";
+        gameObject.name = "black";
+
+        check = 0;
+
+    }
     void Change()
     {
 
@@ -108,11 +128,11 @@ public class Ball : MonoBehaviour
             reseet = false;
             check++;
         }
-           else  if (check == 4)
+        else if (check == 4)
         {
-             spriteRenderer.sprite = NextSprite;
-             NextSprite = ball[0];
-           
+            spriteRenderer.sprite = NextSprite;
+            NextSprite = ball[0];
+
             reseet = true;
         }
     }
@@ -123,8 +143,11 @@ public class Ball : MonoBehaviour
         {
             Debug.Log("플레이어와 충돌");
             col = true;
+
+            pPos = other.transform.position;
         }
     }
+
 
     void OnTriggerExit2D(Collider2D other)
     {
