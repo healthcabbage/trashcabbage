@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ARISAN/10 cute girl character set/sample.unity
+- path: Assets/Scenes/SampleScene.unity
   isLoaded: 1
   isActive: 1
