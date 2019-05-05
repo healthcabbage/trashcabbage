@@ -40,8 +40,8 @@ public class Ball : MonoBehaviour
                         spriteRenderer.sprite = NextSprite;
                         NextSprite = ball[0];
                         
-                        spriteRenderer.tag = "black";
-                        gameObject.name = "black";
+                        spriteRenderer.tag = "Red";
+                        gameObject.name = "Red";
                         timer = 0;
                         check = 0;
                         reseet = false;
@@ -79,12 +79,13 @@ public class Ball : MonoBehaviour
         packball.gameObject.GetComponent<FollowBall>().enabled = true;
 
         spriteRenderer.sprite = ball[0];
-        spriteRenderer.tag = "black";
-        gameObject.name = "black";
+        spriteRenderer.tag = "Red";
+        gameObject.name = "Red";
 
         check = 0;
 
     }
+
     void Change()
     {
 
@@ -92,8 +93,8 @@ public class Ball : MonoBehaviour
         {
             spriteRenderer.sprite = NextSprite;
             NextSprite = ball[1];
-            spriteRenderer.tag = "black";
-            gameObject.name = "black";
+            spriteRenderer.tag = "Orange";
+            gameObject.name = "Orange";
             check++;
         }
         else if (check == 1)
@@ -101,8 +102,8 @@ public class Ball : MonoBehaviour
             check++;
 
             spriteRenderer.sprite = NextSprite;
-            spriteRenderer.tag = "red";
-            gameObject.name = "red";
+            spriteRenderer.tag = "Green";
+            gameObject.name = "Green";
 
 
             NextSprite = ball[2];
@@ -113,23 +114,32 @@ public class Ball : MonoBehaviour
 
             spriteRenderer.sprite = NextSprite;
 
-            spriteRenderer.tag = "yello";
-            gameObject.name = "yello";
+            spriteRenderer.tag = "Blue";
+            gameObject.name = "Blue";
 
             NextSprite = ball[3];
         }
         else if (check == 3)
         {
             spriteRenderer.sprite = NextSprite;
-            spriteRenderer.tag = "blue";
-            gameObject.name = "blue";
+            spriteRenderer.tag = "Pink";
+            gameObject.name = "Pink";
 
             NextSprite = ball[4];
-            reseet = false;
+            //reseet = false;
             check++;
         }
         else if (check == 4)
         {
+            spriteRenderer.sprite = NextSprite;
+            NextSprite = ball[5];
+
+            check++;
+           // reseet = true;
+        }
+        else if(check == 5)
+        {
+            if(reseet == false)
             spriteRenderer.sprite = NextSprite;
             NextSprite = ball[0];
 

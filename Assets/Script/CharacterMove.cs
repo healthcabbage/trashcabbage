@@ -6,6 +6,7 @@ public class CharacterMove : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
     Rigidbody2D rigid;
+    bool input_ = false;
     //Vector3 movement;
 
     // Start is called before the first frame update
@@ -24,10 +25,7 @@ public class CharacterMove : MonoBehaviour
     }
     void OntTriggerEnter(Collider col)
     {
-        // if(col.tag == black)
-        // {
-        //     Debug.Log("검은 구슬");
-        // }
+        
 
     }
 

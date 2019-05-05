@@ -4,10 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - red
-  - blue
-  - yello
   - black
+  - Red
+  - Blue
+  - Green
+  - Orange
+  - Pink
+  - red
   layers:
   - Default
   - TransparentFX
