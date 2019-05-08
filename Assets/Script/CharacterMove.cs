@@ -6,7 +6,8 @@ public class CharacterMove : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
     Rigidbody2D rigid;
-    Vector3 movement;
+    bool input_ = false;
+    //Vector3 movement;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,15 @@ public class CharacterMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if(Input.GetKey(KeyCode.Space))
+        // {
+        //     if()
+        // }
+    }
+    void OntTriggerEnter(Collider col)
+    {
         
+
     }
 
     void FixedUpdate()
@@ -28,21 +37,28 @@ public class CharacterMove : MonoBehaviour
     {
         Vector3 moveVelocity = Vector3.zero;
 
-        if(Input.GetAxisRaw ("Horizontal")<0){
+
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
             moveVelocity = Vector3.left;
         }
-        
-        else if(Input.GetAxisRaw ("Horizontal")>0){
+
+        else if (Input.GetAxisRaw("Horizontal") > 0)
+        {
             moveVelocity = Vector3.right;
         }
-        
-        else if(Input.GetAxisRaw ("Vertical")<0){
+
+        else if (Input.GetAxisRaw("Vertical") < 0)
+        {
             moveVelocity = Vector3.down;
         }
-        
-        else if(Input.GetAxisRaw ("Vertical")>0){
+
+        else if (Input.GetAxisRaw("Vertical") > 0)
+        {
             moveVelocity = Vector3.up;
         }
+
+
 
         transform.position += moveVelocity * moveSpeed * Time.deltaTime;
     }
