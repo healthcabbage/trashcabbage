@@ -22,6 +22,9 @@ public class FollowBall : MonoBehaviour
             CharMove();
             gameObject.transform.position = pPos + _Dir;            
         }
+
+        if(Input.GetKeyDown("enter"))
+         gameObject.GetComponent<FollowBall>().enabled = false;
     }
 
       void OnTriggerStay2D(Collider2D other)

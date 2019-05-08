@@ -1466,7 +1466,7 @@ MonoBehaviour:
   - {fileID: 21300002, guid: cb3b8b6f613a1a2489012207f149c3fb, type: 3}
   check: 0
   NextSprite: {fileID: 0}
-  delatTime: 3
+  delatTime: 1
 --- !u!114 &1181125629
 MonoBehaviour:
   m_ObjectHideFlags: 0
