@@ -24,7 +24,10 @@ public class FollowBall : MonoBehaviour
         }
 
         if(Input.GetKeyDown("enter"))
-         gameObject.GetComponent<FollowBall>().enabled = false;
+         {
+             gameObject.GetComponent<SameBall>().enabled = true;
+             gameObject.GetComponent<FollowBall>().enabled = false;
+        }
     }
 
       void OnTriggerStay2D(Collider2D other)
@@ -39,9 +42,9 @@ public class FollowBall : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D other)
-{
+    {
     col = false;
-}
+    }
 
     void CharMove()
 {

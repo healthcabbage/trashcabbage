@@ -63,9 +63,6 @@ public class Ball : MonoBehaviour
             }
         }
 
-
-
-
     }
 
     void PickUpBall()
@@ -93,8 +90,8 @@ public class Ball : MonoBehaviour
         {
             spriteRenderer.sprite = NextSprite;
             NextSprite = ball[1];
-            spriteRenderer.tag = "Orange";
-            gameObject.name = "Orange";
+            spriteRenderer.tag = "Red";
+            gameObject.name = "Red";
             check++;
         }
         else if (check == 1)
@@ -102,9 +99,9 @@ public class Ball : MonoBehaviour
             check++;
 
             spriteRenderer.sprite = NextSprite;
-            spriteRenderer.tag = "Green";
-            gameObject.name = "Green";
-
+           
+          spriteRenderer.tag = "Orange";
+            gameObject.name = "Orange";
 
             NextSprite = ball[2];
         }
@@ -113,17 +110,17 @@ public class Ball : MonoBehaviour
             check++;
 
             spriteRenderer.sprite = NextSprite;
-
-            spriteRenderer.tag = "Blue";
-            gameObject.name = "Blue";
+ spriteRenderer.tag = "Green";
+            gameObject.name = "Green";
+            
 
             NextSprite = ball[3];
         }
         else if (check == 3)
         {
             spriteRenderer.sprite = NextSprite;
-            spriteRenderer.tag = "Pink";
-            gameObject.name = "Pink";
+       spriteRenderer.tag = "Blue";
+            gameObject.name = "Blue";
 
             NextSprite = ball[4];
             //reseet = false;
@@ -132,6 +129,8 @@ public class Ball : MonoBehaviour
         else if (check == 4)
         {
             spriteRenderer.sprite = NextSprite;
+                 spriteRenderer.tag = "Pink";
+            gameObject.name = "Pink";
             NextSprite = ball[5];
 
             check++;
