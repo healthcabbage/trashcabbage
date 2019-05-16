@@ -25,6 +25,9 @@ public class Ball : MonoBehaviour
 
         check = 1;
 
+        spriteRenderer.tag = "Red";
+        gameObject.name = "Red";
+        check++;
     }
 
     // Update is called once per frame
@@ -32,26 +35,11 @@ public class Ball : MonoBehaviour
     {
         if (col == true)
         {
-              if (reseet == true)
-                {
-                    timer += Time.deltaTime;
-                    if (timer > delatTime)
-                    {
-                        spriteRenderer.sprite = NextSprite;
-                        NextSprite = ball[0];
-                        
-                        spriteRenderer.tag = "Red";
-                        gameObject.name = "Red";
-                        timer = 0;
-                        check = 0;
-                        reseet = false;
+           
 
-                    }
-                } 
-                
             if (Input.GetKeyDown("[0]"))
             {
-              
+
                 Change();
 
                 Debug.Log("키누름");
@@ -62,6 +50,22 @@ public class Ball : MonoBehaviour
                 pickup = true;
             }
         }
+         if (reseet == true)
+            {
+                timer += Time.deltaTime;
+                if (timer > delatTime)
+                {
+                    spriteRenderer.sprite = NextSprite;
+                    NextSprite = ball[0];
+
+                    spriteRenderer.tag = "Red";
+                    gameObject.name = "Red";
+                    timer = 0;
+                    check = 1;
+                    reseet = false;
+
+                }
+            }
 
     }
 
@@ -79,67 +83,67 @@ public class Ball : MonoBehaviour
         spriteRenderer.tag = "Red";
         gameObject.name = "Red";
 
-        check = 0;
+        NextSprite = ball[1];
+        check = 1;
 
     }
 
     void Change()
     {
-
         if (check == 0)
         {
             spriteRenderer.sprite = NextSprite;
             NextSprite = ball[1];
             spriteRenderer.tag = "Red";
             gameObject.name = "Red";
-            check++;
+            check = 1;
         }
         else if (check == 1)
         {
-            check++;
+            check = 2;
 
             spriteRenderer.sprite = NextSprite;
-           
-          spriteRenderer.tag = "Orange";
+
+            spriteRenderer.tag = "Orange";
             gameObject.name = "Orange";
 
             NextSprite = ball[2];
         }
         else if (check == 2)
         {
-            check++;
+            
 
             spriteRenderer.sprite = NextSprite;
- spriteRenderer.tag = "Green";
+            spriteRenderer.tag = "Green";
             gameObject.name = "Green";
-            
+            check = 3;
 
             NextSprite = ball[3];
         }
         else if (check == 3)
         {
             spriteRenderer.sprite = NextSprite;
-       spriteRenderer.tag = "Blue";
+            spriteRenderer.tag = "Blue";
             gameObject.name = "Blue";
 
             NextSprite = ball[4];
             //reseet = false;
-            check++;
+            check = 4;
         }
         else if (check == 4)
         {
             spriteRenderer.sprite = NextSprite;
-                 spriteRenderer.tag = "Pink";
+            spriteRenderer.tag = "Pink";
             gameObject.name = "Pink";
             NextSprite = ball[5];
 
-            check++;
-           // reseet = true;
+            check = 5;
+            // reseet = true;
         }
-        else if(check == 5)
+        else if (check == 5)
         {
-            if(reseet == false)
-            spriteRenderer.sprite = NextSprite;
+            if (reseet == false)
+                spriteRenderer.sprite = NextSprite;
             NextSprite = ball[0];
 
             reseet = true;
@@ -162,6 +166,8 @@ public class Ball : MonoBehaviour
     {
         col = false;
         Debug.Log("탈출!");
+        timer= 0;
+
         //input_0 = false;
     }
 

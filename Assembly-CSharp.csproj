@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Script\Ball.cs" />
      <Compile Include="Assets\Script\CharacterMove.cs" />
+     <Compile Include="Assets\Script\DeleteBall.cs" />
      <Compile Include="Assets\Script\FollowBall.cs" />
      <Compile Include="Assets\Script\Passage.cs" />
      <Compile Include="Assets\Script\SameBall.cs" />
