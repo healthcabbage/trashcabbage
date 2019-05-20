@@ -16,8 +16,13 @@ public class Ball : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public float delatTime = 3.0f;
     Vector2 pPos;
+    private AudioSource audio;
+    public AudioClip jumpSound;
     void Start()
     {
+        this.audio = this.gameObject.AddComponent<AudioSource>();
+        this.audio.clip = this.jumpSound;
+        this.audio.loop = false;
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
@@ -97,6 +102,7 @@ public class Ball : MonoBehaviour
             spriteRenderer.tag = "Red";
             gameObject.name = "Red";
             check = 1;
+
         }
         else if (check == 1)
         {
@@ -106,12 +112,12 @@ public class Ball : MonoBehaviour
 
             spriteRenderer.tag = "Orange";
             gameObject.name = "Orange";
-
+            this.audio.Play();
             NextSprite = ball[2];
         }
         else if (check == 2)
         {
-            
+            this.audio.Play();
 
             spriteRenderer.sprite = NextSprite;
             spriteRenderer.tag = "Green";
@@ -125,7 +131,7 @@ public class Ball : MonoBehaviour
             spriteRenderer.sprite = NextSprite;
             spriteRenderer.tag = "Blue";
             gameObject.name = "Blue";
-
+            this.audio.Play();
             NextSprite = ball[4];
             //reseet = false;
             check = 4;
@@ -136,14 +142,18 @@ public class Ball : MonoBehaviour
             spriteRenderer.tag = "Pink";
             gameObject.name = "Pink";
             NextSprite = ball[5];
-
+            this.audio.Play();
             check = 5;
             // reseet = true;
         }
         else if (check == 5)
         {
+
             if (reseet == false)
+            {
                 spriteRenderer.sprite = NextSprite;
+                this.audio.Play();
+            }
             NextSprite = ball[0];
 
             reseet = true;

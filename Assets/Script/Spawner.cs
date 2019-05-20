@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
             pos[i].y = 8.7f + (-5.4f * i);   
             curball[i].transform.position = new Vector2(pos[i].x,pos[i].y);
 
-
+            if(i !=3)
             Instantiate(curball[i]);//네개 생성         
         }
     }
