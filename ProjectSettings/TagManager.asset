@@ -12,6 +12,7 @@ TagManager:
   - Pink
   - red
   - passage
+  - passage2
   layers:
   - Default
   - TransparentFX

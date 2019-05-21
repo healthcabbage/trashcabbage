@@ -15,7 +15,7 @@ public class DeleteBall : MonoBehaviour
     public AudioClip breakSound;
     void Start()
     {
-        this.audio = this.gameObject.AddComponent<AudioSource>();
+        this.audio = this.gameObject.AddComponent<AudioSource>();        
         this.audio.clip = this.breakSound;
         this.audio.loop = false;
     }
@@ -37,11 +37,15 @@ public class DeleteBall : MonoBehaviour
             if (destroyball == true)
             {
                 if (gameObject.transform.localScale.x > 0.5)
-                    gameObject.transform.localScale -= new Vector3(0.5f, 0.5f, 0.0f);
-
+                    {
+                        gameObject.transform.localScale -= new Vector3(0.5f, 0.5f, 0.0f);
+                        
+                        this.audio.Play();
+                    }
+            
                 else
                 {
-                    this.audio.Play();
+                    
                     Destroy(gameObject);
                 }
                 //timer += Time.deltaTime;
@@ -59,8 +63,10 @@ public class DeleteBall : MonoBehaviour
     {
         if (other.CompareTag("black"))
         {
+           
             Debug.Log("쓰레기통 충돌");
             pos = other.gameObject.transform.position;
+            
             col_trashcan = true;
         }
     }
