@@ -8,14 +8,6 @@ public class P2_Cursor : MonoBehaviour
     private GameObject Cursor;
 
     private float targetAngle = 0f;
-   // private float cursorRotationSpeed = 4f;
-
-    private GameObject sphere;
-    private float buttonDownTime;
-
-    public float sphereMagnitudeX = 2.0f;
-    public float sphereMagnitudeY = 3.0f;
-    public float sphereFrequency = 1.0f;
 
     void Start()
     {
@@ -28,8 +20,8 @@ public class P2_Cursor : MonoBehaviour
         if (Input.GetMouseButtonDown(0) &&
             !EventSystem.current.IsPointerOverGameObject())
         {
-            Debug.Log(string.Format("mousePosition ({0:f},{1:f})",
-                Input.mousePosition.x, Input.mousePosition.y));
+            /*Debug.Log(string.Format("mousePosition ({0:f},{1:f})",
+                Input.mousePosition.x, Input.mousePosition.y));*/
 
             targetAngle = GetRotationAngleByTargetPosition(Input.mousePosition);
 
