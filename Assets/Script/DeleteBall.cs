@@ -8,6 +8,8 @@ public class DeleteBall : MonoBehaviour
     public float delatTime = 1.0f;
     bool col_trashcan = false;
     bool destroyball = false;
+    int count = 0;
+    bool sest = false;
     Vector2 pos;
     // Start is called before the first frame update
 
@@ -23,12 +25,20 @@ public class DeleteBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (sest == true)
+        {
+            count++;
+            if (count > 200)
+                Destroy(gameObject);
+        }
 
         if (col_trashcan == true)
         {
+           
             if (Input.GetKeyDown("enter"))
             {
-
+                this.audio.Play();
+                gameObject.GetComponent<FollowBall>().enabled = false;
                 gameObject.transform.position = pos;
                 //gameObject.transform.localScale -= new Vector3(1.0f,1.0f,0.0f);
                 destroyball = true;
@@ -39,14 +49,15 @@ public class DeleteBall : MonoBehaviour
                 if (gameObject.transform.localScale.x > 0.5)
                     {
                         gameObject.transform.localScale -= new Vector3(0.5f, 0.5f, 0.0f);
-                        
-                        this.audio.Play();
+                    sest = true;
+
+
                     }
             
                 else
                 {
+                    gameObject.transform.position = new Vector2(-10.7f, 19);
                     
-                    Destroy(gameObject);
                 }
                 //timer += Time.deltaTime;
                 //if (timer > delatTime)

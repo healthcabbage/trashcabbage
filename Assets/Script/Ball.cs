@@ -169,6 +169,7 @@ public class Ball : MonoBehaviour
 
             pPos = other.transform.position;
         }
+        
     }
 
 

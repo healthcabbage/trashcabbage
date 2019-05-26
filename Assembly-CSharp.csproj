@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Ball.cs" />
     <Compile Include="Assets\Script\CharacterMove.cs" />
+    <Compile Include="Assets\Script\ControllMusic.cs" />
     <Compile Include="Assets\Script\DeleteBall.cs" />
     <Compile Include="Assets\Script\FollowBall.cs" />
     <Compile Include="Assets\Script\P2_Background.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Assets\Script\Passage.cs" />
     <Compile Include="Assets\Script\PopBall.cs" />
     <Compile Include="Assets\Script\SameBall.cs" />
+    <Compile Include="Assets\Script\Setting.cs" />
     <Compile Include="Assets\Script\Spawner.cs" />
     <Compile Include="Assets\Script\SuCheulMove.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">

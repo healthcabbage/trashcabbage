@@ -19,10 +19,10 @@ public class Spawner : MonoBehaviour
             curball[i] = Blackball;
             
             pos[i].x = (-18.7f);
-            pos[i].y = 8.7f + (-5.4f * i);   
+            pos[i].y = 6.8f + (-4.8f * i);   //-7.64
             curball[i].transform.position = new Vector2(pos[i].x,pos[i].y);
 
-            if(i !=3)
+          
             Instantiate(curball[i]);//네개 생성         
         }
     }

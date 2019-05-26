@@ -40,8 +40,16 @@ public class FollowBall : MonoBehaviour
             pPos = other.transform.position;
         }
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("black"))
+        {
+            gameObject.GetComponent<DeleteBall>().enabled = true;
+           // gameObject.GetComponent<FollowBall>().enabled = false;
+        }
+    }
 
-    void OnTriggerExit2D(Collider2D other)
+        void OnTriggerExit2D(Collider2D other)
     {
     col = false;
     }
