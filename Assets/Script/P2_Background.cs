@@ -24,11 +24,11 @@ public class P2_Background : MonoBehaviour
     void Update()
     {
         if (itemPoint == 8) return; ///줄이 5이 되면 탈출(게임오버조건)
-        Debug.Log(itemPoint);
+        //Debug.Log(itemPoint);
 
         float px_1 = -2.82f;
         float px_2 = -1.82f;
-
+        
         if (itemTF == true)
         {
             for (int i = 0; i < 9; i++)

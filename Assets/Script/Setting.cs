@@ -26,4 +26,10 @@ public class Setting : MonoBehaviour
         SceneManager.LoadScene("Start");
     }
 
+       public void reTry()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }
