@@ -6,18 +6,18 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     // Start is called before the first frame update
-    bool col = false;
-    bool pickup = false;
-    public Sprite[] ball;
-    public int check = 0;
-    bool reseet = false;
-    private float timer = 0;
-    public Sprite NextSprite;
+    bool col = false;//플레이어와 충돌
+    
+    public Sprite[] ball;//공 이미지 받아옴
+    public int check = 0;//몇번째 공을 가져야하는지 체크
+    bool reseet = false;//마지막 공 두드림 체크
+    private float timer = 0;//공 리젠 시간 체크
+    public Sprite NextSprite;//다음 공 이미지
     private SpriteRenderer spriteRenderer;
-    public float delatTime = 3.0f;
-    Vector2 pPos;
-    private AudioSource audio;
-    public AudioClip jumpSound;
+    public float delatTime = 3.0f;//리젠 시간 : 3초
+    Vector2 pPos;//플레이어 위치 받아옴
+    private AudioSource audio;//오디오를 여기서 받아야할까... 좀 고민해보자
+    public AudioClip jumpSound;//두드리면 플레이
     void Start()
     {
         this.audio = this.gameObject.AddComponent<AudioSource>();
@@ -26,49 +26,45 @@ public class Ball : MonoBehaviour
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        NextSprite = ball[1];
+        NextSprite = ball[1];//두번째 공 세팅
 
-        check = 1;
+        check = 1;//음...
 
-        spriteRenderer.tag = "Red";
-        gameObject.name = "Red";
-        check++;
+        spriteRenderer.tag = "Red";//시작 태그 : 레드
+        gameObject.name = "Red";//시작 이름 : 레드        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (col == true)
+        if (col == true)//플레이어랑 만났을 때
         {
-           
-
-            if (Input.GetKeyDown("[0]"))
+            if (Input.GetKeyDown("[0]"))//넘버키 0 누름
             {
+                Change();//공 바꿈
 
-                Change();
-
-                Debug.Log("키누름");
+                Debug.Log("키누름");//이제 없어도 됨
             }
-            if (Input.GetKeyDown("enter"))
+            if (Input.GetKeyDown("enter"))//엔터 누름
             {
-                PickUpBall();
-                pickup = true;
+                PickUpBall();//공 주기                
             }
         }
-         if (reseet == true)
+         if (reseet == true)//마지막 공 두드림
             {
-                timer += Time.deltaTime;
-                if (timer > delatTime)
+                timer += Time.deltaTime;//타이머 가동
+                if (timer > delatTime)//타이머 다됨
                 {
-                    spriteRenderer.sprite = NextSprite;
-                    NextSprite = ball[0];
+                     
+                    spriteRenderer.sprite = NextSprite;//다음 스프라이트로 교환
+                    // NextSprite = ball[0];//이거 없어도 되지않아?
 
-                    spriteRenderer.tag = "Red";
-                    gameObject.name = "Red";
+                    // spriteRenderer.tag = "Red";//이거도 딱히 여기 없어도 되잖아
+                    // gameObject.name = "Red";//
                     timer = 0;
                     check = 1;
                     reseet = false;
-
+                NextSprite = ball[1];//다음 스프라이트 오렌지로 설정
                 }
             }
 
@@ -77,25 +73,25 @@ public class Ball : MonoBehaviour
     void PickUpBall()
     {
         //gameObject.transform.position = pPos;
-        GameObject packball;
-        packball = Instantiate(gameObject);
-        packball.transform.position = pPos;
+        GameObject packball;//게임 오브젝트 생성
+        packball = Instantiate(gameObject);//주기
+        packball.transform.position = pPos;//위치 = 플레이어 위치
         Debug.Log("픽업");
 
-        packball.gameObject.GetComponent<FollowBall>().enabled = true;
+        packball.gameObject.GetComponent<FollowBall>().enabled = true;//공 따라가기 준다
 
-        spriteRenderer.sprite = ball[0];
+        spriteRenderer.sprite = ball[0];//공 초기화
         spriteRenderer.tag = "Red";
         gameObject.name = "Red";
 
-        NextSprite = ball[1];
+        NextSprite = ball[1];//다음 공 세팅
         check = 1;
 
     }
 
-    void Change()
+    void Change()//넘패드 0 누름
     {
-        if (check == 0)
+        if (check == 0)//레드
         {
             spriteRenderer.sprite = NextSprite;
             NextSprite = ball[1];
@@ -103,30 +99,30 @@ public class Ball : MonoBehaviour
             gameObject.name = "Red";
             check = 1;
 
-        }
-        else if (check == 1)
+        }  
+        else if (check == 1)//오렌지
         {
-            check = 2;
+            check++;
 
-            spriteRenderer.sprite = NextSprite;
+            spriteRenderer.sprite = NextSprite;//스프라이트 교체
 
-            spriteRenderer.tag = "Orange";
+            spriteRenderer.tag = "Orange";//태그 변경
             gameObject.name = "Orange";
             this.audio.Play();
-            NextSprite = ball[2];
+            NextSprite = ball[2];//그린으로
         }
-        else if (check == 2)
+        else if (check == 2)//그린
         {
             this.audio.Play();
 
             spriteRenderer.sprite = NextSprite;
             spriteRenderer.tag = "Green";
             gameObject.name = "Green";
-            check = 3;
+            check++;
 
             NextSprite = ball[3];
         }
-        else if (check == 3)
+        else if (check == 3)//블루
         {
             spriteRenderer.sprite = NextSprite;
             spriteRenderer.tag = "Blue";
@@ -134,28 +130,29 @@ public class Ball : MonoBehaviour
             this.audio.Play();
             NextSprite = ball[4];
             //reseet = false;
-            check = 4;
+            check++;
         }
-        else if (check == 4)
+        else if (check == 4)//핫핑크
         {
             spriteRenderer.sprite = NextSprite;
             spriteRenderer.tag = "Pink";
             gameObject.name = "Pink";
             NextSprite = ball[5];
             this.audio.Play();
-            check = 5;
-            // reseet = true;
+            check++;
         }
-        else if (check == 5)
+        else if (check == 5)//마지막공 두드림
         {
-
-            if (reseet == false)
+            if (reseet == false)//처음 들어왔을때
             {
                 spriteRenderer.sprite = NextSprite;
                 this.audio.Play();
             }
-            NextSprite = ball[0];
+            
+            NextSprite = ball[0];//여기 넣어보자
 
+            spriteRenderer.tag = "Red";
+            gameObject.name = "Red";
             reseet = true;
         }
     }
@@ -169,7 +166,6 @@ public class Ball : MonoBehaviour
 
             pPos = other.transform.position;
         }
-        
     }
 
 
